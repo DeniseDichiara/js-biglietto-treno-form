@@ -3,11 +3,15 @@ let  userkilometers = document.getElementById('user-kilometers');
 
 let userAge = document.getElementById('user-age');
 
+
+// ! calcolo prezzo biglietto
+let kmPrice =  userkilometers * 0.233;
+
 const button = document.querySelector('button');
 
 
-// ! calcolo prezzo biglietto
-let kmPrice = Math.floor( userkilometers * 0.233);
+
+
 
 //? Sconto del 20% per i minorenni
 const underagediscount = Math.floor (kmPrice - (( 19.4 / 100)* kmPrice));
@@ -18,7 +22,17 @@ const majordiscount = Math.floor (kmPrice - (( 37.7 / 100)* kmPrice));
 
 
 button.addEventListener('click', function(){
-    alert ('ENJOY');
+    const outputelement = document.querySelector ('pre');
+    outputelement.innerHTML += " " +  userkilometers.value + userAge.value;
+
+    if (userAge.value < 18){
+        outputelement.classList.add('lightblue');
+    } else if(userAge.value >=65){
+        outputelement.classList.add('magenta');
+    }
+
+    
+
     //if(userAge < 18){
         //console.log('You are young');
         
